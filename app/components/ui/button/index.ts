@@ -1,11 +1,6 @@
 import type { VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
 
-export { default as Button } from './Button.vue'
-
-import type { CSSProperties } from "vue"
-import { cva } from "class-variance-authority"
-
 export { default as Button } from "./Button.vue"
 
 export const buttonVariants = cva(
@@ -43,8 +38,7 @@ export const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 )
-
 
 export type ButtonVariants = VariantProps<typeof buttonVariants>
