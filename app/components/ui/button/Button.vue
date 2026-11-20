@@ -2,7 +2,7 @@
 import type { PrimitiveProps } from 'reka-ui'
 import type { CSSProperties, HTMLAttributes } from 'vue'
 import type { ButtonVariants } from '.'
-import { cn } from 'cn'
+import { cn } from '~/lib/utils'
 import { Primitive } from 'reka-ui'
 import { computed } from 'vue'
 import { buttonVariants } from '.'
@@ -19,10 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'default',
   size: 'default',
 })
-
-const hasEmphasisGradient = computed(
-  () => props.variant === 'default' || props.variant === 'destructive',
-)
 
 const emphasisStyle = computed<CSSProperties | undefined>(() => {
   const token =
@@ -55,15 +51,6 @@ const emphasisStyle = computed<CSSProperties | undefined>(() => {
     :class="cn(buttonVariants({ variant, size }), props.class)"
     :style="emphasisStyle ?? props.style"
   >
-    <template v-if="hasEmphasisGradient">
-      <span
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 rounded-[inherit] bg-linear-to-b from-[var(--button-emphasis-gradient-start)] to-[var(--button-emphasis-gradient-end)] shadow-[inset_0_1px_0_0_var(--button-emphasis-bg)] transition-colors group-hover/button:from-[var(--button-emphasis-bg)]"
-      />
-      <span class="relative z-10 inline-flex items-center gap-1.5">
-        <slot />
-      </span>
-    </template>
-    <slot v-else />
+    <slot />
   </Primitive>
 </template>
