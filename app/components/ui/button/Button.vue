@@ -49,9 +49,6 @@ const emphasisStyle = computed<CSSProperties | undefined>(() => {
   } as CSSProperties
 })
 
-const hasEmphasisGradient = computed(
-  () => props.variant != null && props.variant in emphasisStyles,
-)
 </script>
 
 <template>
@@ -65,15 +62,6 @@ const hasEmphasisGradient = computed(
     :style="emphasisStyle ?? props.style"
     v-bind="$attrs"
   >
-    <template v-if="hasEmphasisGradient">
-      <span
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 rounded-[inherit] bg-linear-to-b from-[var(--button-emphasis-gradient-start)] to-[var(--button-emphasis-gradient-end)] shadow-[inset_0_1px_0_0_var(--button-emphasis-bg)] transition-colors group-hover/button:from-[var(--button-emphasis-bg)]"
-      />
-      <span class="relative z-10 inline-flex items-center gap-1.5">
-        <slot />
-      </span>
-    </template>
-    <slot v-else />
+    <slot />
   </Primitive>
 </template>
