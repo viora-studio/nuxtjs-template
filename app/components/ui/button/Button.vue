@@ -25,7 +25,7 @@ const emphasisStyle = computed<CSSProperties | undefined>(() => {
     props.variant === 'default'
       ? 'var(--primary)'
       : props.variant === 'destructive'
-        ? 'var(--destructive)'
+        ? 'var(--destructive-strong)'
         : undefined
 
   if (!token)
