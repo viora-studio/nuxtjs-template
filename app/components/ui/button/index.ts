@@ -10,6 +10,8 @@ export const buttonVariants = cva(
       variant: {
         default:
           "relative overflow-hidden bg-[var(--button-emphasis-bg)] bg-linear-to-b from-[var(--button-emphasis-gradient-start)] to-[var(--button-emphasis-gradient-end)] text-primary-foreground ring-inset ring-1 ring-[var(--button-emphasis-ring)] shadow-[inset_0_1px_0_0_var(--button-emphasis-bg),inset_0_1px_2px_rgba(0,0,0,0.16)] transition-colors group-hover/button:from-[var(--button-emphasis-bg)] focus-visible:ring-[var(--button-emphasis-ring)] active:ring-[var(--button-emphasis-ring)]",
+        brand:
+          "relative overflow-hidden bg-[var(--button-emphasis-bg)] bg-linear-to-b from-[var(--button-emphasis-gradient-start)] to-[var(--button-emphasis-gradient-end)] text-brand-foreground ring-inset ring-1 ring-[var(--button-emphasis-ring)] shadow-[inset_0_1px_0_0_var(--button-emphasis-bg),inset_0_1px_2px_rgba(0,0,0,0.16)] transition-colors group-hover/button:from-[var(--button-emphasis-bg)] focus-visible:ring-[var(--button-emphasis-ring)] active:ring-[var(--button-emphasis-ring)]",
         outline:
           "border-border bg-input/30 hover:bg-input/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
         secondary:
