@@ -24,6 +24,9 @@ const emphasisStyles = {
   default: {
     token: 'var(--primary)',
   },
+  brand: {
+    token: 'var(--brand)',
+  },
   destructive: {
     token: 'var(--destructive-strong)',
   },
