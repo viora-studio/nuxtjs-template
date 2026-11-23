@@ -20,16 +20,25 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'default',
 })
 
-const emphasisStyle = computed<CSSProperties | undefined>(() => {
-  const token =
-    props.variant === 'default'
-      ? 'var(--primary)'
-      : props.variant === 'destructive'
-        ? 'var(--destructive-strong)'
-        : undefined
+const emphasisStyles = {
+  default: {
+    token: 'var(--primary)',
+  },
+  destructive: {
+    token: 'var(--destructive-strong)',
+  },
+} as const
 
-  if (!token)
+const emphasisStyle = computed<CSSProperties | undefined>(() => {
+  const emphasis =
+    props.variant && props.variant in emphasisStyles
+      ? emphasisStyles[props.variant as keyof typeof emphasisStyles]
+      : undefined
+
+  if (!emphasis)
     return undefined
+
+  const { token } = emphasis
 
   return {
     '--button-emphasis-ring': `color-mix(in oklch, ${token}, black 10%)`,
@@ -39,6 +48,10 @@ const emphasisStyle = computed<CSSProperties | undefined>(() => {
     ...props.style,
   } as CSSProperties
 })
+
+const hasEmphasisGradient = computed(
+  () => props.variant != null && props.variant in emphasisStyles,
+)
 </script>
 
 <template>
@@ -50,7 +63,17 @@ const emphasisStyle = computed<CSSProperties | undefined>(() => {
     :as-child="asChild"
     :class="cn(buttonVariants({ variant, size }), props.class)"
     :style="emphasisStyle ?? props.style"
+    v-bind="$attrs"
   >
-    <slot />
+    <template v-if="hasEmphasisGradient">
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 rounded-[inherit] bg-linear-to-b from-[var(--button-emphasis-gradient-start)] to-[var(--button-emphasis-gradient-end)] shadow-[inset_0_1px_0_0_var(--button-emphasis-bg)] transition-colors group-hover/button:from-[var(--button-emphasis-bg)]"
+      />
+      <span class="relative z-10 inline-flex items-center gap-1.5">
+        <slot />
+      </span>
+    </template>
+    <slot v-else />
   </Primitive>
 </template>
