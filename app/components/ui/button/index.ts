@@ -17,7 +17,7 @@ export const buttonVariants = cva(
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:
-          "relative overflow-hidden bg-[var(--button-emphasis-bg)] text-white ring-inset ring-1 ring-[var(--button-emphasis-ring)] shadow-xs focus-visible:ring-[var(--button-emphasis-ring)] active:ring-[var(--button-emphasis-ring)]",
+          "relative overflow-hidden bg-[var(--button-emphasis-bg)] bg-linear-to-b from-[var(--button-emphasis-gradient-start)] to-[var(--button-emphasis-gradient-end)] text-white ring-inset ring-1 ring-[var(--button-emphasis-ring)] shadow-xs transition-colors group-hover/button:from-[var(--button-emphasis-bg)] focus-visible:ring-[var(--button-emphasis-ring)] active:ring-[var(--button-emphasis-ring)]",
         "secondary-destructive":
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
