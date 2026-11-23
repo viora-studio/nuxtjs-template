@@ -11,6 +11,7 @@ export const badgeVariants = cva(
         default: 'bg-primary text-primary-foreground [a]:hover:bg-primary/80',
         secondary: 'bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80',
         destructive: 'bg-destructive/10 [a]:hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 text-destructive dark:bg-destructive/20',
+        brand: 'bg-brand text-brand-foreground [a]:hover:bg-brand/80',
         success: 'bg-success-tint text-success [a]:hover:bg-success-tint/80',
         info: 'bg-info-tint text-info [a]:hover:bg-info-tint/80',
         warning: 'bg-warning-tint text-warning [a]:hover:bg-warning-tint/80',
